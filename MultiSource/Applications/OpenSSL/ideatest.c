@@ -107,7 +107,7 @@ static unsigned char cfb_cipher64[CFB_TEST_SIZE]={
 
 static int cfb64_test(unsigned char *cfb_cipher);
 static char *pt(unsigned char *p);
-void idea_test()
+int idea_test()
 	{
 	int i,err=0;
 	IDEA_KEY_SCHEDULE key,dkey; 
@@ -140,7 +140,7 @@ void idea_test()
 		err=5;
 		}
 
-    return;
+    return err;
 	}
 
 static int cfb64_test(unsigned char *cfb_cipher)

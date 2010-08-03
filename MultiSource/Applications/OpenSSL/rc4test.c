@@ -112,7 +112,7 @@ static unsigned char output[7][30]={
 	{0},
 	};
 
-void rc4_test()
+int rc4_test()
 	{
 	int i,err=0;
 	int j;
@@ -172,6 +172,6 @@ void rc4_test()
 			err++;
 		}
 	}
-  return;
+  return err;
 	}
 #endif

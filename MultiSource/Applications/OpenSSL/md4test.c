@@ -94,7 +94,7 @@ static char *ret[]={
 };
 
 static char *pt(unsigned char *md);
-void md4_test()
+int md4_test()
 	{
 	int i,err=0;
 	char **P,**R;
@@ -117,7 +117,7 @@ void md4_test()
 		P++;
 		}
 		
-    return;
+    return err;
 	}
 
 static char *pt(unsigned char *md)

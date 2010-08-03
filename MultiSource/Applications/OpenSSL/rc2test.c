@@ -139,7 +139,7 @@ static unsigned char cfb_cipher64[CFB_TEST_SIZE]={
 static char *pt(unsigned char *p);
 #endif
 
-void rc2_test()
+int rc2_test()
 	{
 	int i,n,err=0;
 	RC2_KEY key; 
@@ -179,7 +179,7 @@ void rc2_test()
 		}
 #endif
 
-  return;
+  return err;
 	}
 
 #ifdef undef

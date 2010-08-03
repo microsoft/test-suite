@@ -90,7 +90,7 @@ static unsigned char pad2[16]={
 	0x35,0xD8,0x7A,0xFE,0xAB,0x33,0xBE,0xE2
 	};
 
-void mdc2_test()
+int mdc2_test()
 	{
 	int ret=0;
 	unsigned char md[MDC2_DIGEST_LENGTH];
@@ -124,6 +124,6 @@ void mdc2_test()
 		}
 
 	EVP_MD_CTX_cleanup(&c);
-    return;
+    return ret;
 	}
 #endif
