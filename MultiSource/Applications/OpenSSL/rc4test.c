@@ -172,6 +172,6 @@ void rc4_test()
 			err++;
 		}
 	}
-  return err;
+  return;
 	}
 #endif

@@ -124,6 +124,6 @@ void mdc2_test()
 		}
 
 	EVP_MD_CTX_cleanup(&c);
-    return ret;
+    return;
 	}
 #endif

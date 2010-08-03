@@ -117,7 +117,7 @@ void md4_test()
 		P++;
 		}
 		
-    return err;
+    return;
 	}
 
 static char *pt(unsigned char *md)

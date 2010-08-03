@@ -140,7 +140,7 @@ void idea_test()
 		err=5;
 		}
 
-    return err;
+    return;
 	}
 
 static int cfb64_test(unsigned char *cfb_cipher)

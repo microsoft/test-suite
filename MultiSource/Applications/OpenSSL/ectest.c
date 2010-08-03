@@ -1080,12 +1080,12 @@ int internal_curve_test(void)
 	curves = OPENSSL_malloc(sizeof(EC_builtin_curve) * crv_len);
 
 	if (curves == NULL)
-		return;
+		return 0;
 
 	if (!EC_get_builtin_curves(curves, crv_len))
 		{
 		OPENSSL_free(curves);
-		return;
+		return 0;
 		}
 
 	for (n = 0; n < crv_len; n++)

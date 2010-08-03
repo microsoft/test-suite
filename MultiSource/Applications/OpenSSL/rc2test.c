@@ -179,7 +179,7 @@ void rc2_test()
 		}
 #endif
 
-  return err;
+  return;
 	}
 
 #ifdef undef
