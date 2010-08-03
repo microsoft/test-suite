@@ -206,10 +206,6 @@ int ecdh_test()
 	int ret=1;
 	BIO *out;
 
-	CRYPTO_malloc_debug_init();
-	CRYPTO_dbg_set_options(V_CRYPTO_MDEBUG_ALL);
-	CRYPTO_mem_ctrl(CRYPTO_MEM_CHECK_ON);
-
 #ifdef OPENSSL_SYS_WIN32
 	CRYPTO_malloc_init();
 #endif
@@ -248,7 +244,6 @@ err:
 	BIO_free(out);
 	CRYPTO_cleanup_all_ex_data();
 	ERR_remove_thread_state(NULL);
-	CRYPTO_mem_leaks_fp(stderr);
 	
   return ret;
 	}

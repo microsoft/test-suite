@@ -147,10 +147,6 @@ int dsa_test()
 	if (bio_err == NULL)
 		bio_err=BIO_new_fp(stdout,BIO_NOCLOSE);
 
-	CRYPTO_malloc_debug_init();
-	CRYPTO_dbg_set_options(V_CRYPTO_MDEBUG_ALL);
-	CRYPTO_mem_ctrl(CRYPTO_MEM_CHECK_ON);
-
 	ERR_load_crypto_strings();
 	RAND_seed(rnd_seed, sizeof rnd_seed);
 
@@ -207,7 +203,6 @@ end:
 	CRYPTO_cleanup_all_ex_data();
 	ERR_remove_thread_state(NULL);
 	ERR_free_strings();
-	CRYPTO_mem_leaks(bio_err);
 	if (bio_err != NULL)
 		{
 		BIO_free(bio_err);

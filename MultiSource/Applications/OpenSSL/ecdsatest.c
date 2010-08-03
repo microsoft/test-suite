@@ -449,7 +449,6 @@ err:
 	CRYPTO_cleanup_all_ex_data();
 	ERR_remove_thread_state(NULL);
 	ERR_free_strings();
-	CRYPTO_mem_leaks(out);
 	if (out != NULL)
 		BIO_free(out);
 	
