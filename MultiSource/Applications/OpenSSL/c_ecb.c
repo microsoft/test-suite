@@ -58,7 +58,7 @@
 
 #include "cast.h"
 #include "cast_lcl.h"
-#include <openssl/opensslv.h>
+#include "opensslv.h"
 
 const char CAST_version[]="CAST" OPENSSL_VERSION_PTEXT;
 

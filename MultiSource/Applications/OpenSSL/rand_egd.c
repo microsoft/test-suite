@@ -110,7 +110,7 @@ int RAND_egd_bytes(const char *path,int bytes)
 	return(-1);
 	}
 #else
-#include <openssl/opensslconf.h>
+#include "opensslconf.h"
 #include OPENSSL_UNISTD
 #include <sys/types.h>
 #include <sys/socket.h>

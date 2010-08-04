@@ -4,7 +4,7 @@
  * according to the OpenSSL license [found in ../../LICENSE].
  * ====================================================================
  */
-#include <openssl/opensslconf.h>
+#include "opensslconf.h"
 #if !defined(OPENSSL_NO_SHA) && !defined(OPENSSL_NO_SHA512)
 /*
  * IMPLEMENTATION NOTES.
