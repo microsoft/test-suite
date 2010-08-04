@@ -366,18 +366,18 @@ int main(int argc, char **argv) {
   double time;
 
   ret |= run_test(&bf_test, f, "Result-Blowfish", 750);
-  ret |= run_test(&cast_test, f, "Result-CAST", 2);
-  ret |= run_test(&dsa_test, f, "Result-DSA", 50);
+  //ret |= run_test(&cast_test, f, "Result-CAST", 2);
+  //ret |= run_test(&dsa_test, f, "Result-DSA", 50);
   ret |= run_test(&ecdh_test, f, "Result-ECDH", 15);
-  ret |= run_test(&ecdsa_test, f, "Result-ECDSA", 2);
-  ret |= run_test(&ec_test, f, "Result-EC", 2);
+  //ret |= run_test(&ecdsa_test, f, "Result-ECDSA", 2);
+  //ret |= run_test(&ec_test, f, "Result-EC", 2);
   ret |= run_test(&hmac_test, f, "Result-HMAC", 70000);
-  ret |= run_test(&idea_test, f, "Result-IDEA", 300000);
+  //ret |= run_test(&idea_test, f, "Result-IDEA", 300000);
   ret |= run_test(&md4_test, f, "Result-MD4", 70000);
   ret |= run_test(&md5_test, f, "Result-MD5", 70000);
   ret |= run_test(&mdc2_test, f, "Result-MDC2", 300000);
   ret |= run_test(&rc2_test, f, "Result-RC2", 700000);
-  ret |= run_test(&rc4_test, f, "Result-RC4", 200);
+  //ret |= run_test(&rc4_test, f, "Result-RC4", 200);
   ret |= run_test(&rmd_test, f, "Result-RipeMD", 40000);
   ret |= run_test(&rsa_test, f, "Result-RSA", 2);
   ret |= run_test(&sha_test, f, "Result-SHA", 400);
