@@ -156,6 +156,7 @@ int cast_test()
 	    err=3;
 	    }
 	}
+    if (err == 0)
 
 #ifdef FULL_TEST
       {
@@ -183,11 +184,11 @@ int cast_test()
       if (	(memcmp(out_a,c_a,sizeof(c_a)) != 0) ||
 		(memcmp(out_b,c_b,sizeof(c_b)) != 0))
 	  {
-      err = 1;
+      err = 5;
 	  }
-      }
+  }
 #endif
 
-      return err;
+    return(err);
     }
 #endif

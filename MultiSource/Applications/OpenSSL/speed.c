@@ -377,7 +377,7 @@ int main(int argc, char **argv) {
   ret |= run_test(&rc2_test, f, "Result-RC2", 700000);
   ret |= run_test(&rc4_test, f, "Result-RC4", 200);
   ret |= run_test(&rmd_test, f, "Result-RipeMD", 40000);
-  ret |= run_test(&rsa_test, f, "Result-RSA", 2);
+  ret |= run_test(&rsa_test, f, "Result-RSA", 6);
   ret |= run_test(&sha_test, f, "Result-SHA", 400);
   ret |= run_test(&wp_test, f, "Result-WHRLPOOL", 100);
   
