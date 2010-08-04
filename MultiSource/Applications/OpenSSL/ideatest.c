@@ -127,7 +127,9 @@ int idea_test()
 		err=3;
 		}
 
+	memcpy(iv,k,8);
 	idea_cbc_encrypt((unsigned char *)text,out,strlen(text)+1,&key,iv,1);
+	memcpy(iv,k,8);
 	idea_cbc_encrypt(out,out,8,&dkey,iv,0);
 	idea_cbc_encrypt(&(out[8]),&(out[8]),strlen(text)+1-8,&dkey,iv,0);
 	if (memcmp(text,out,strlen(text)+1) != 0)
@@ -140,7 +142,7 @@ int idea_test()
 		err=5;
 		}
 
-    return err;
+	return(err);
 	}
 
 static int cfb64_test(unsigned char *cfb_cipher)
