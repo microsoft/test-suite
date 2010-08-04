@@ -333,7 +333,6 @@ static void *KDF1_SHA1(const void *in, size_t inlen, void *out, size_t *outlen)
   extern int cast_test();
   extern int dsa_test();
   extern int ecdh_test();
-  extern int ecdsa_test();
   extern int ec_test();
   extern int hmac_test();
   extern int idea_test();
@@ -369,7 +368,6 @@ int main(int argc, char **argv) {
   //ret |= run_test(&cast_test, f, "Result-CAST", 2);
   ret |= run_test(&dsa_test, f, "Result-DSA", 50);
   ret |= run_test(&ecdh_test, f, "Result-ECDH", 15);
-  //ret |= run_test(&ecdsa_test, f, "Result-ECDSA", 2);
   ret |= run_test(&ec_test, f, "Result-EC", 2);
   ret |= run_test(&hmac_test, f, "Result-HMAC", 70000);
   ret |= run_test(&idea_test, f, "Result-IDEA", 300000);
