@@ -367,7 +367,7 @@ int main(int argc, char **argv) {
 
   ret |= run_test(&bf_test, f, "Result-Blowfish", 750);
   //ret |= run_test(&cast_test, f, "Result-CAST", 2);
-  //ret |= run_test(&dsa_test, f, "Result-DSA", 50);
+  ret |= run_test(&dsa_test, f, "Result-DSA", 50);
   ret |= run_test(&ecdh_test, f, "Result-ECDH", 15);
   //ret |= run_test(&ecdsa_test, f, "Result-ECDSA", 2);
   ret |= run_test(&ec_test, f, "Result-EC", 2);

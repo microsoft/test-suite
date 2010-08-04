@@ -145,17 +145,16 @@ int dsa_test()
 	unsigned int siglen;
 
 	if (bio_err == NULL)
-		bio_err=BIO_new_fp(stdout,BIO_NOCLOSE);
+		bio_err=BIO_new_fp(stderr,BIO_NOCLOSE);
 
 	ERR_load_crypto_strings();
 	RAND_seed(rnd_seed, sizeof rnd_seed);
-
 
 	BN_GENCB_set(&cb, dsa_cb, bio_err);
 	if(((dsa = DSA_new()) == NULL) || !DSA_generate_parameters_ex(dsa, 512,
 				seed, 20, &counter, &h, &cb))
 		goto end;
-		
+
 	if (counter != 105) 
 		{
 		goto end;
@@ -208,8 +207,7 @@ end:
 		BIO_free(bio_err);
 		bio_err = NULL;
 		}
-
-    return ret;
+	return(!ret);
 	}
 
 static int MS_CALLBACK dsa_cb(int p, int n, BN_GENCB *arg)
