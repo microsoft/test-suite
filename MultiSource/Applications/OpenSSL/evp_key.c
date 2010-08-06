@@ -95,21 +95,7 @@ int EVP_read_pw_string(char *buf, int len, const char *prompt, int verify)
 
 int EVP_read_pw_string_min(char *buf, int min, int len, const char *prompt, int verify)
 	{
-	int ret;
-	char buff[BUFSIZ];
-	UI *ui;
-
-	if ((prompt == NULL) && (prompt_string[0] != '\0'))
-		prompt=prompt_string;
-	ui = UI_new();
-	UI_add_input_string(ui,prompt,0,buf,min,(len>=BUFSIZ)?BUFSIZ-1:len);
-	if (verify)
-		UI_add_verify_string(ui,prompt,0,
-			buff,min,(len>=BUFSIZ)?BUFSIZ-1:len,buf);
-	ret = UI_process(ui);
-	UI_free(ui);
-	OPENSSL_cleanse(buff,BUFSIZ);
-	return ret;
+    return 0;
 	}
 
 int EVP_BytesToKey(const EVP_CIPHER *type, const EVP_MD *md, 

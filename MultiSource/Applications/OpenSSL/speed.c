@@ -270,6 +270,84 @@ static SIGRETTYPE sig_done(int sig)
 #define START	0
 #define STOP	1
 
+/* app_tminterval section */
+#if defined(_WIN32)
+double app_tminterval(int stop,int usertime)
+	{
+	FILETIME		now;
+	double			ret=0;
+	static ULARGE_INTEGER	tmstart;
+	static int		warning=1;
+#ifdef _WIN32_WINNT
+	static HANDLE		proc=NULL;
+
+	if (proc==NULL)
+		{
+		if (GetVersion() < 0x80000000)
+			proc = OpenProcess(PROCESS_QUERY_INFORMATION,FALSE,
+						GetCurrentProcessId());
+		if (proc==NULL) proc = (HANDLE)-1;
+		}
+
+	if (usertime && proc!=(HANDLE)-1)
+		{
+		FILETIME junk;
+		GetProcessTimes(proc,&junk,&junk,&junk,&now);
+		}
+	else
+#endif
+		{
+		SYSTEMTIME systime;
+
+		if (usertime && warning)
+			{
+			BIO_printf(bio_err,"To get meaningful results, run "
+					   "this program on idle system.\n");
+			warning=0;
+			}
+		GetSystemTime(&systime);
+		SystemTimeToFileTime(&systime,&now);
+		}
+
+	if (stop==TM_START)
+		{
+		tmstart.u.LowPart  = now.dwLowDateTime;
+		tmstart.u.HighPart = now.dwHighDateTime;
+		}
+	else	{
+		ULARGE_INTEGER tmstop;
+
+		tmstop.u.LowPart   = now.dwLowDateTime;
+		tmstop.u.HighPart  = now.dwHighDateTime;
+
+		ret = (__int64)(tmstop.QuadPart - tmstart.QuadPart)*1e-7;
+		}
+
+	return (ret);
+	}
+
+#else
+#include <sys/time.h>
+#include <sys/resource.h>
+
+double app_tminterval(int stop,int usertime)
+	{
+	double		ret = 0;
+	struct rusage	rus;
+	struct timeval	now;
+	static struct timeval tmstart;
+
+	if (usertime)		getrusage(RUSAGE_SELF,&rus), now = rus.ru_utime;
+	else			gettimeofday(&now,NULL);
+
+	if (stop==TM_START)	tmstart = now;
+	else			ret = ( (now.tv_sec+now.tv_usec*1e-6)
+					- (tmstart.tv_sec+tmstart.tv_usec*1e-6) );
+
+	return ret;
+	}
+#endif
+
 #if defined(_WIN32)
 
 #define SIGALRM
