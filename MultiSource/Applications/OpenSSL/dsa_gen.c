@@ -214,7 +214,7 @@ int dsa_builtin_paramgen(DSA *ret, size_t bits, size_t qbits,
 
 			/* step 4 */
 			r = BN_is_prime_fasttest_ex(q, DSS_prime_checks, ctx,
-					seed_is_random, cb);
+					1, cb);
 			if (r > 0)
 				break;
 			if (r != 0)
