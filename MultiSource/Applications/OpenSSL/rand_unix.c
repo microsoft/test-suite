@@ -116,22 +116,6 @@
 #include "rand.h"
 #include "rand_lcl.h"
 
-#if !(defined(OPENSSL_SYS_WINDOWS) || defined(OPENSSL_SYS_WIN32) || defined(OPENSSL_SYS_VMS) || defined(OPENSSL_SYS_OS2) || defined(OPENSSL_SYS_VXWORKS) || defined(OPENSSL_SYS_NETWARE))
-
-#include <sys/types.h>
-#include <sys/time.h>
-#include <sys/times.h>
-#include <sys/stat.h>
-#include <fcntl.h>
-#include <unistd.h>
-#include <time.h>
-#if defined(OPENSSL_SYS_LINUX) /* should actually be available virtually everywhere */
-# include <poll.h>
-#endif
-#include <limits.h>
-#ifndef FD_SETSIZE
-# define FD_SETSIZE (8*sizeof(fd_set))
-#endif
 
 int RAND_poll(void)
 	{
