@@ -432,11 +432,16 @@ int run_test(int (*test_func)(), FILE *out, const char* string, unsigned REPS) {
     result |= test_func();
   double time = Time_F(STOP);
   fprintf(out, "%s: %.2f\n", string, time);
+  if (result)
+    fprintf(stderr, "error: %s failed!\n", string);
   return result;
 }
 
 int main(int argc, char **argv) {
-  assert(argc == 2);
+  if (argc != 2) {
+    fprintf(stderr, "usage: %s <results-file>\n", argv[0]);
+    return 1;
+  }
 
   int ret = 0;
   FILE *f = fopen(argv[1], "w");
