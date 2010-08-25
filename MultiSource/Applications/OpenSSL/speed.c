@@ -443,26 +443,31 @@ int main(int argc, char **argv) {
     return 1;
   }
 
+#ifdef SMALL_PROBLEM_SIZE
+  int small = 1;
+#else
+  int small = 0;
+#endif
   int ret = 0;
   FILE *f = fopen(argv[1], "w");
   double time;
 
-  ret |= run_test(&bf_test, f, "Result-Blowfish", 750);
-  //ret |= run_test(&cast_test, f, "Result-CAST", 2);
-  ret |= run_test(&dsa_test, f, "Result-DSA", 50);
-  ret |= run_test(&ecdh_test, f, "Result-ECDH", 15);
-  ret |= run_test(&ec_test, f, "Result-EC", 2);
-  ret |= run_test(&hmac_test, f, "Result-HMAC", 70000);
-  ret |= run_test(&idea_test, f, "Result-IDEA", 300000);
-  ret |= run_test(&md4_test, f, "Result-MD4", 70000);
-  ret |= run_test(&md5_test, f, "Result-MD5", 70000);
-  ret |= run_test(&mdc2_test, f, "Result-MDC2", 300000);
-  ret |= run_test(&rc2_test, f, "Result-RC2", 700000);
-  ret |= run_test(&rc4_test, f, "Result-RC4", 200);
-  ret |= run_test(&rmd_test, f, "Result-RipeMD", 40000);
-  ret |= run_test(&rsa_test, f, "Result-RSA", 6);
-  ret |= run_test(&sha_test, f, "Result-SHA", 400);
-  ret |= run_test(&wp_test, f, "Result-WHRLPOOL", 100);
+  ret |= run_test(&bf_test, f, "Result-Blowfish", small ?    100 :    750);
+  //ret |= run_test(&cast_test, f, "Result-CAST", small ?      1 :      2);
+  ret |= run_test(&dsa_test, f, "Result-DSA",     small ?     10 :     50);
+  ret |= run_test(&ecdh_test, f, "Result-ECDH",   small ?      3 :     15);
+  ret |= run_test(&ec_test, f, "Result-EC",       small ?      1 :      2);
+  ret |= run_test(&hmac_test, f, "Result-HMAC",   small ?  10000 :  70000);
+  ret |= run_test(&idea_test, f, "Result-IDEA",   small ?   6000 : 300000);
+  ret |= run_test(&md4_test, f, "Result-MD4",     small ?  10000 :  70000);
+  ret |= run_test(&md5_test, f, "Result-MD5",     small ?  10000 :  70000);
+  ret |= run_test(&mdc2_test, f, "Result-MDC2",   small ?   6000 : 300000);
+  ret |= run_test(&rc2_test, f, "Result-RC2",     small ? 100000 : 700000);
+  ret |= run_test(&rc4_test, f, "Result-RC4",     small ?     40 :    200);
+  ret |= run_test(&rmd_test, f, "Result-RipeMD",  small ?   8000 :  40000);
+  ret |= run_test(&rsa_test, f, "Result-RSA",     small ?      1 :      6);
+  ret |= run_test(&sha_test, f, "Result-SHA",     small ?     80 :    400);
+  ret |= run_test(&wp_test, f, "Result-WHRLPOOL", small ?     20 :    100);
   
   fclose(f);
   
